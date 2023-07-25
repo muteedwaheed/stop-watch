@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <style>
+          #div1{
+        background-color: rgb(11, 9, 113);
+        width: 300px;
+        height: 300px;
+        border: 5px solid rgb(11, 194, 154);
+        border-radius: 10%;
+    }
+    span{
+        color: white;
+        font-size: xx-large;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="div1" class="mt-5">
+        <div class="row">
+            <div class="col-md-12 ml-5 mt-5">
+                <h4 class="text-white">stop watch</h4>
+                <span id="mn">0</span> <span id="se">00</span> <span id="ms">00</span>
+            </div>
+            <div class="row mt-5 ml-5">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-outline-warning" id="b1">start</button>
+                    <button type="button" class="btn btn-outline-danger" id="b2">stop</button>
+                    <button type="button" class="btn btn-outline-success" id="b3">clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        let minInterval = 0;
+        let secInterval = 0;
+        let msecInterval = 0;
+
+
+        $(document).ready(function(){
+            $('#b1').click(function(){
+                minuiteInterval= setInterval(function(){
+                    minInterval += 1 ;
+                    $('#mn').text(minInterval);
+             },60000);
+             secondInterval = setInterval(function(){
+                secInterval += 1 ;
+                if(secInterval >59){
+                    secInterval = 1 ;
+                }
+                $('#se').text(secInterval);
+             },1000);
+             milisecond = setInterval(function(){
+                msecInterval += 1 ; 
+                if(msecInterval>99){
+                    msecInterval = 1 ; 
+                }
+                $('#ms').text(msecInterval);
+             },10);
+            });
+            $('#b2').click(function(){
+                clearInterval(minuiteInterval);
+                clearInterval(secondInterval);
+                clearInterval(milisecond);
+            });
+            $('#b3').click(function(){
+                $('#mn').text(0);
+                $('#se').text(0);
+                $('#ms').text(0);
+            });
+        });
+    </script>
+</body>
+
+</html>
